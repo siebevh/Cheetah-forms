@@ -1,8 +1,8 @@
 {
-  "name": "vue-clock-simple",
-  "version": "1.0.4",
-  "description": "A Vue.js component that displays a clock",
-  "main": "dist/vue-clock.js",
+  "name": "cheetah-form",
+  "version": "0.1.0",
+  "description": "A Vuetify Json based form generator",
+  "main": "dist/cheetah-forms.js",
   "scripts": {
     "build": "rimraf ./dist && webpack --config ./webpack.config.js"
   },
