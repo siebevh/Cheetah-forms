@@ -18,11 +18,11 @@
 
 
 
-<!-- PROJECT LOGO -->
-<!--<br />
+
+<br />
 <p align="center">
   <a href="https://github.com/siebevh/Cheetah-forms">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="./images/logo.png" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">Cheetah Forms</h3>
@@ -40,7 +40,7 @@
     <a href="https://github.com/siebevh/Cheetah-forms.svg/issues">Request Feature</a>
   </p>
 </p>
--->
+
 
 
 <!-- TABLE OF CONTENTS -->
