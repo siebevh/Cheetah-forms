@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-form-generator" v-if="schema && model">
+  <div id="cheetah-form" v-if="schema && model">
     <div class="header" v-if="schema.title">
       <h3 class="primary--text text-lg-left mb-2 header-title">{{schema.title}}
         <small>{{schema.subtitle}}
@@ -55,8 +55,6 @@
               <v-layout row wrap>
                 <v-spacer/>
                 <v-btn color="primary"
-                       role="button"
-                       aria-pressed="false"
                        v-if="index < schema.groups.length - 1 "
                        @click="nextStage">
                   Next
@@ -67,8 +65,6 @@
         </v-stepper>
       </template>
       <v-btn color="primary"
-             role="button"
-             aria-pressed="false"
              v-if="showSaveButton"
              @click="save()">
         Save
@@ -152,10 +148,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import "styles";
 
-  .vue-form-generator {
+  #cheetah-form {
     padding: 10px;
 
     * {
@@ -191,6 +187,10 @@ export default {
 
     .v-stepper__content {
       transition: .3ms cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    .primary {
+      background-color: #11324b;
     }
   }
 </style>
