@@ -153,6 +153,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import "styles";
+
   .vue-form-generator {
     padding: 10px;
 
