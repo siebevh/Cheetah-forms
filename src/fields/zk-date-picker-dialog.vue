@@ -91,32 +91,6 @@
       };
     }
   };
-
- /* export default {
-    computed: {
-      datepickerDate: {
-        get() {
-          if (this.value) {
-            return new Date(this.value).toISOString().substr(0, 10);
-          }
-          return new Date().toISOString().substr(0, 10);
-        },
-        set(val) {
-          this.value = new Date(val);
-        },
-      },
-    },
-    watch: {
-      modal(val) {
-        val && setTimeout(() => this.$refs.picker.activePicker = 'YEAR');
-      },
-    },
-    methods: {
-      formatDate(date) {
-
-      },
-    },
-  };*/
 </script>
 <style>
   .v-dialog__container {
