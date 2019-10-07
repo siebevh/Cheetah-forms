@@ -21,7 +21,7 @@
 <!-- PROJECT LOGO -->
 <!--<br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/siebevh/Cheetah-forms">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -141,12 +141,12 @@ Project Link: [https://github.com/siebevh/Cheetah-forms](https://github.com/sieb
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/siebevh/Cheetah-forms.svg
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[contributors-url]: https://github.com/siebevh/Cheetah-forms/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/siebevh/Cheetah-forms.svg
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[forks-url]: https://github.com/siebevh/Cheetah-forms/network/members
 [stars-shield]: https://img.shields.io/github/stars/siebevh/Cheetah-forms.svg
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[stars-url]: https://github.com/siebevh/Cheetah-forms/stargazers
 [issues-shield]: https://img.shields.io/github/issues/siebevh/Cheetah-forms.svg
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[issues-url]: https://github.com/siebevh/Cheetah-forms/issues
 [license-shield]: https://img.shields.io/github/license/siebevh/Cheetah-forms
 [license-url]: https://github.com/siebevh/Cheetah-forms/blob/master/LICENSE.txt
