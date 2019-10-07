@@ -1,21 +1,32 @@
-.header {
-  border-bottom: 1px solid rgb(235, 237, 242);
-}
+#cheetah-form {
+  .header {
+    border-bottom: 1px solid rgb(235, 237, 242);
+  }
 
-.header-title {
-  margin: 0;
-  padding: 0;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #3d4465;
+  .header-title {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #3d4465;
 
-  small {
-	color: rgb(171, 172, 176);
-}
-}
+    small {
+      color: rgb(171, 172, 176);
+    }
+  }
 
 
-.tab-card, .card {
-  padding: 10px !important;
-  border-radius: 7px !important;
+  .tab-card, .card {
+    padding: 10px !important;
+    border-radius: 7px !important;
+  }
+
+
+  .error--text {
+    color: darkred;
+  }
+
+  .primary {
+    background-color: #11324b;
+  }
 }

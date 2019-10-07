@@ -68,7 +68,7 @@ export default {
   }
 
 
-  ::v-deep .dense-inputs {
+  >>> .dense-inputs {
     .v-input {
       font-size: 14px;
 
