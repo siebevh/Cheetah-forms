@@ -47,7 +47,7 @@
                 <v-spacer/>
                 <v-btn color="primary" v-if="index < schema.groups.length - 1 "
                        @click="nextStage">
-                  Volgende
+                  Next
                 </v-btn>
               </v-layout>
             </v-stepper-content>
@@ -56,7 +56,7 @@
       </template>
       <v-btn color="primary" v-if="showSaveButton"
              @click="save()">
-        Opslaan
+        Save
       </v-btn>
     </v-container>
   </div>
