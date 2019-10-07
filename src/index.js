@@ -1,28 +1,15 @@
-import component from './formGenerator.vue';
-import './plugins/vuetify';
-import './plugins/composition-api';
+import Vue from 'vue';
+import VueCompositionApi from '@vue/composition-api';
+import cheetahForm from './formGenerator.vue';
 
-function install(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-  Vue.component('cheetahForm', component);
-}
-
-const plugin = {
-  install,
+const components = {
+  cheetahForm,
 };
 
-let GlobalVue = null;
-if (typeof window !== 'undefined') {
-  GlobalVue = window.Vue;
-} else if (typeof global !== 'undefined') {
-  GlobalVue = global.vue;
-}
+Object.keys(components).forEach((name) => {
+  Vue.component(name, components[name]);
+});
 
-if (GlobalVue) {
-  GlobalVue.use(plugin);
-}
+Vue.use(VueCompositionApi);
 
-component.install = install;
-
-export default component;
+export default components;
