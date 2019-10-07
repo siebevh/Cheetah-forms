@@ -9,7 +9,10 @@
     </div>
 
     <v-container grid-list-md text-xs-right>
-      <v-form ref="form" class="xs12" v-model="schema.valid" v-if="schema.fields">
+      <v-form ref="form" class="xs12"
+              v-model="schema.valid"
+              v-if="schema.fields"
+              :aria-label="schema.title">
         <v-layout row wrap>
           <template v-for="field in schema.fields">
             <v-flex :[dynamicFlex(field)]="true" :key="field.model">
@@ -35,7 +38,7 @@
             </v-stepper-step>
 
             <v-stepper-content :step="index + 1"  :key="'sc' + index">
-              <v-form ref="form" v-model="group.valid">
+              <v-form ref="form" v-model="group.valid" :aria-label="group.title">
                 <v-layout row wrap>
 
                   <template v-for="field in group.fields">
@@ -51,7 +54,10 @@
               </v-form>
               <v-layout row wrap>
                 <v-spacer/>
-                <v-btn color="primary" v-if="index < schema.groups.length - 1 "
+                <v-btn color="primary"
+                       role="button"
+                       aria-pressed="false"
+                       v-if="index < schema.groups.length - 1 "
                        @click="nextStage">
                   Next
                 </v-btn>
@@ -60,7 +66,10 @@
           </template>
         </v-stepper>
       </template>
-      <v-btn color="primary" v-if="showSaveButton"
+      <v-btn color="primary"
+             role="button"
+             aria-pressed="false"
+             v-if="showSaveButton"
              @click="save()">
         Save
       </v-btn>

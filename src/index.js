@@ -1,10 +1,11 @@
 import component from './formGenerator.vue';
 import './plugins/vuetify';
+import './plugins/composition-api';
 
 function install(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component('SimpleAlert', component);
+  Vue.component('cheetahForm', component);
 }
 
 const plugin = {
