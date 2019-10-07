@@ -66,7 +66,7 @@
 Cheetah Forms is a simple JSON form builder for generating a Vuetify Form with just a JSON. 
 Cheetah Forms uses Vuetify to make you form a Material designed form
 
-####Features:
+#### Features:
   * JSON based
   * Grid support
   * Default fields
@@ -110,8 +110,8 @@ npm install cheetah-forms
     <cheetah-form :schema="schema" :model="model" @save="save"></cheetah-form>
 ```
 ##### with:
- * `schema`: the json configuration of the form
- * `model`: the starting value of your model
+ * `schema`: the json configuration of the form (required)
+ * `model`: the starting value of your model (required)
  * `@save`: event for handeling the save (returns edited model)
  
 ### JSON FORM FORMAT
@@ -154,15 +154,15 @@ npm install cheetah-forms
 
 ```
 ##### with:
- * `type`: the type of field (check suported types
- * `name`: the label of the field
- * `required`: if the field is required or not
- * `disabled`: if the field is disabled or not
- * `placeholder`: the placeholder
- * `hint`: the hint
- * `model`: model in doted notation
- * `prefix`: a prefix added before the field
- * `cols`: the width of the field (1-12)
+ * `type`: the type of field (check suported types) (required)
+ * `name`: the label of the field (required) 
+ * `model`: model in doted notation (required)
+ * `required`: if the field is required or not (optional)
+ * `disabled`: if the field is disabled or not (optional)
+ * `placeholder`: the placeholder (optional)
+ * `hint`: the hint (optional)
+ * `prefix`: a prefix added before the field (optional)
+ * `cols`: the width of the field (1-12, default: 12) 
  
 ### JSON GROUP FORMAT
 ```
@@ -174,9 +174,9 @@ npm install cheetah-forms
 
 ```
 ##### with:
- * `id`: id of the group
- * `title`: the title of the group
- * `fields`: array of fields (see Json Field format)
+ * `id`: id of the group (required)
+ * `title`: the title of the group (required)
+ * `fields`: array of fields (see Json Field format) (required)
  
 ### SUPPORTED TYPES
  * `text-field`: a normal text field
