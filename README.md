@@ -17,8 +17,6 @@
 [![MIT License][license-shield]][license-url]
 
 
-
-
 <br />
 <p align="center">
   <a href="https://github.com/siebevh/Cheetah-forms">
@@ -33,7 +31,7 @@
     <a href="https://github.com/siebevh/Cheetah-forms"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/siebevh/Cheetah-forms.svg">View Demo</a>
+    <a href="#">View Demo</a>
     ·
     <a href="https://github.com/siebevh/Cheetah-forms.svg/issues">Report Bug</a>
     ·
