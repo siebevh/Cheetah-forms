@@ -19,24 +19,24 @@
 </template>
 
 <script>
-  import { getRules } from './composistions/get-rules';
-  import { getFieldFromModel } from './composistions/get-field-from-model';
+import { getRules } from './composistions/get-rules';
+import { getFieldFromModel } from './composistions/get-field-from-model';
 
-  export default {
-    props: {
-      model: Object,
-      schema: Object,
-    },
-    setup(props, context) {
-      const { rules } = getRules(props.schema, props.model);
-      const { value, setValue, visible } = getFieldFromModel(props.schema, props.model, context);
+export default {
+  props: {
+    model: Object,
+    schema: Object,
+  },
+  setup(props, context) {
+    const { rules } = getRules(props.schema, props.model);
+    const { value, setValue, visible } = getFieldFromModel(props.schema, props.model, context);
 
-      return {
-        visible: visible.boolValue,
-        rules,
-        value,
-        setValue,
-      };
-    }
-  };
+    return {
+      visible: visible.boolValue,
+      rules,
+      value,
+      setValue,
+    };
+  },
+};
 </script>

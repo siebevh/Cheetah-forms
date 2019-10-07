@@ -12,28 +12,34 @@
       <v-form ref="form" class="xs12" v-model="schema.valid" v-if="schema.fields">
         <v-layout row wrap>
           <template v-for="field in schema.fields">
-            <v-flex :[dynamicFlex(field)]="true">
-              <form-group :field="field" :model="model" @model-updated="onModelUpdated"></form-group>
+            <v-flex :[dynamicFlex(field)]="true" :key="field.model">
+              <form-group
+                      :field="field"
+                      :model="model"
+                      @model-updated="onModelUpdated">
+              </form-group>
             </v-flex>
           </template>
         </v-layout>
       </v-form>
       <template>
         <v-stepper class="elevation-0 no-transition" v-model="stage" vertical v-if="groups.length">
-          <template v-for="(group, index) in groups">
+          <template v-for="(group, index) in groups" >
             <v-stepper-step :step="index + 1" :complete="stage > index" editable
                             :rules="[() => !erroredGroupsArray[index]]"
-                            :color="(stage === index ? 'secondary' : 'primary')">
+                            :color="(stage === index ? 'secondary' : 'primary')"
+                            :key="'s' + index"
+            >
               {{group.title}}
               <small v-if="group.description">{{group.description}}</small>
             </v-stepper-step>
 
-            <v-stepper-content :step="index + 1">
+            <v-stepper-content :step="index + 1"  :key="'sc' + index">
               <v-form ref="form" v-model="group.valid">
                 <v-layout row wrap>
 
                   <template v-for="field in group.fields">
-                    <v-flex :[dynamicFlex(field)]="true">
+                    <v-flex :[dynamicFlex(field)]="true" :key="'flex' + field">
 
                       <form-group :field="field" :model="model"
                                   @model-updated="onModelUpdated"></form-group>
@@ -47,7 +53,7 @@
                 <v-spacer/>
                 <v-btn color="primary" v-if="index < schema.groups.length - 1 "
                        @click="nextStage">
-                  Volgende
+                  Next
                 </v-btn>
               </v-layout>
             </v-stepper-content>
@@ -56,7 +62,7 @@
       </template>
       <v-btn color="primary" v-if="showSaveButton"
              @click="save()">
-        Opslaan
+        Save
       </v-btn>
     </v-container>
   </div>
@@ -64,77 +70,77 @@
 
 
 <script>
-  import formGroup from './formGroup.vue';
+import formGroup from './formGroup.vue';
 
-  export default {
-    name: 'formGenerator',
-    components: { formGroup },
-    props: {
-      formCode: {
-        type: String,
-      },
-      schema: Object,
-      model: Object,
-      showSaveButton: {
-        type: Boolean,
-        default: true,
-      },
+export default {
+  name: 'formGenerator',
+  components: { formGroup },
+  props: {
+    formCode: {
+      type: String,
     },
-    data() {
-      return {
-        stage: 0,
-        erroredGroupsArray: [], // Validation errors
-      };
+    schema: Object,
+    model: Object,
+    showSaveButton: {
+      type: Boolean,
+      default: true,
     },
-    computed: {
-      fields() {
-        return this.schema.fields;
-      },
-      groups() {
-        const res = [];
-        if (this.schema && this.schema.groups) {
-          this.schema.groups.slice(0).forEach((group) => {
-            res.push(group);
-          });
-        }
-        return res;
-      },
+  },
+  data() {
+    return {
+      stage: 0,
+      erroredGroupsArray: [], // Validation errors
+    };
+  },
+  computed: {
+    fields() {
+      return this.schema.fields;
     },
-    methods: {
-      dynamicFlex(field) {
-        return field.cols ? `md${field.cols}` : 'md12';
-      },
-      onModelUpdated(newVal, schema) {
-        this.$emit('model-updated', newVal, schema);
-      },
-      nextStage() {
-        if (this.stage <= this.groups.length) {
-          this.stage += 1;
-        }
-      },
-      previousStage() {
-        if (this.stage >= 0) {
-          this.stage -= 1;
-        }
-      },
-      // Validating the model properties
-      save() {
-        let valid = false;
-        if (this.schema.groups.length) {
-          this.erroredGroupsArray = this.$refs.form.reduce((erroredArray, form) => {
-            erroredArray.push(!form.validate());
-            return erroredArray;
-          }, []);
-          valid = this.erroredGroupsArray.every(val => !val);
-        } else {
-          valid = this.$refs.form.validate();
-        }
-        if (valid) {
-          this.$emit('save', this.model);
-        }
-      },
+    groups() {
+      const res = [];
+      if (this.schema && this.schema.groups) {
+        this.schema.groups.slice(0).forEach((group) => {
+          res.push(group);
+        });
+      }
+      return res;
     },
-  };
+  },
+  methods: {
+    dynamicFlex(field) {
+      return field.cols ? `md${field.cols}` : 'md12';
+    },
+    onModelUpdated(newVal, schema) {
+      this.$emit('model-updated', newVal, schema);
+    },
+    nextStage() {
+      if (this.stage <= this.groups.length) {
+        this.stage += 1;
+      }
+    },
+    previousStage() {
+      if (this.stage >= 0) {
+        this.stage -= 1;
+      }
+    },
+    // Validating the model properties
+    save() {
+      let valid = false;
+      if (this.schema.groups.length) {
+        this.erroredGroupsArray = this.$refs.form.reduce((erroredArray, form) => {
+          erroredArray.push(!form.validate());
+          return erroredArray;
+        }, []);
+        valid = this.erroredGroupsArray.every(val => !val);
+      } else {
+        valid = this.$refs.form.validate();
+      }
+      if (valid) {
+        this.$emit('save', this.model);
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

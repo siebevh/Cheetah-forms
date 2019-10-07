@@ -66,6 +66,12 @@
 Cheetah Forms is a simple JSON form builder for generating a Vuetify Form with just a JSON. 
 Cheetah Forms uses Vuetify to make you form a Material designed form
 
+#### Fields Form
+![fields Form](./images/fields-form.png)
+
+#### Groups Form
+![groups Form](./images/groups-form.png)
+
 #### Features:
   * JSON based
   * Grid support

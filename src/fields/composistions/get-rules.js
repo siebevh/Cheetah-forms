@@ -12,7 +12,7 @@ export const getRules = (schema, model) => {
       }
       if (schema.requiredIf) {
         if (!getFieldPropBooleanValue(schema, model, 'visibleIf')) {
-          rules.value.push(v => !!v || `${$schema.name} is a required field`);
+          rules.value.push(v => !!v || `${schema.name} is a required field`);
         }
       }
     }
