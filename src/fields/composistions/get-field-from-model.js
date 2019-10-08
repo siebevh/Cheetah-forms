@@ -13,18 +13,20 @@ export const getFieldFromModel = (schema, model, context) => {
     let subPath;
 
     let xmodel = model;
+    if (xmodel === undefined) {
+      xmodel = {};
+    }
     const { length } = pathSplitted;
-
-    for (let i = 0; i < length - 1; i++) {
+    let i;
+    for (i = 0; i < length - 1; i++) {
       subPath = pathSplitted[i];
-      const subModel = model[subPath];
-      if (subModel === undefined) {
+      if (xmodel[subPath] === undefined) {
         xmodel[subPath] = {};
       }
-      xmodel = subModel;
+      xmodel = xmodel[subPath];
     }
     xmodel[pathSplitted[length - 1]] = value;
-    context.emit('model-updated', xmodel, value, schema.model);
+    context.emit('model-updated', model, value, schema.model);
   }
 
 
