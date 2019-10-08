@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { watch, ref, computed } from '@vue/composition-api';
+import { ref, computed } from '@vue/composition-api';
 import { getRules } from './composistions/get-rules';
 import { getFieldFromModel } from './composistions/get-field-from-model';
 
@@ -50,15 +50,6 @@ export default {
     const { rules } = getRules(props.schema, props.model);
 
     const { value, setValue, visible } = getFieldFromModel(props.schema, props.model, context);
-
-    watch(() => modal, () => {
-      if (modal) {
-        // TODO: fix the timout
-        setTimeout(() => {
-          context.refs.picker.activePicker = 'YEAR';
-        }, 1000);
-      }
-    });
 
     function formatDate(date) {
       if (!date || typeof date === 'object') return null;
@@ -94,5 +85,8 @@ export default {
 <style>
   .v-dialog__container {
     width: 100%;
+  }
+  >>> .v-btn--active {
+    color: #11324b;
   }
 </style>

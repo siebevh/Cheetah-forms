@@ -2,7 +2,7 @@
   "name": "cheetah-form",
   "version": "0.1.8",
   "description": "A Vuetify Json based form generator",
-  "main": "dist/cheetahForm.common.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --name cheetahForm ./src/index.js",
     "lint": "vue-cli-service lint --fix"
