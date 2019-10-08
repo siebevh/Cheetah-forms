@@ -22,7 +22,6 @@
         <v-date-picker :value="date"
                        ref="picker"
                        scrollable
-                       :max="today.toISOString()"
                        v-bind="schema.attributes"
                        :readonly="schema.readonly"
                        @input="setDate"
@@ -73,10 +72,10 @@ export default {
     }
 
     const date = computed(() => {
-      if (value) {
+      if (value.value) {
         return new Date(value.value).toISOString().substr(0, 10);
       }
-      return new Date().toISOString().substr(0, 10);
+      return today.toISOString().substr(0, 10);
     });
 
     return {

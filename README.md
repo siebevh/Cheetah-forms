@@ -102,7 +102,7 @@ npm install npm@latest -g
 
 1. Install NPM packages
 ```sh
-npm install cheetah-forms
+npm install cheetah-form
 ```
 
 
@@ -198,8 +198,7 @@ npm install cheetah-forms
       ```
       attributes: {
           first-day-of-week: 1,
-          local: 'nl',
-          yearFirst: true,
+          locale: 'nl',
       }
       ```
  * `select`: ths subtitle of the form (optional)

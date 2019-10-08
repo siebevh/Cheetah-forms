@@ -93,6 +93,7 @@ export default {
   },
   data() {
     return {
+      editedModel: this.model,
       stage: 0,
       erroredGroupsArray: [], // Validation errors
     };
@@ -115,8 +116,9 @@ export default {
     dynamicFlex(field) {
       return field.cols ? `md${field.cols}` : 'md12';
     },
-    onModelUpdated(newVal, schema) {
-      this.$emit('model-updated', newVal, schema);
+    onModelUpdated(model, newVal, schema) {
+      this.editedModel = model;
+      this.$emit('model-updated', model, newVal, schema);
     },
     nextStage() {
       if (this.stage <= this.groups.length) {

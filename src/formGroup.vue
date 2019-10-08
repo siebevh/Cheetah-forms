@@ -47,8 +47,8 @@ export default {
     getFieldType(fieldSchema) {
       return `cheetah-${fieldSchema.type}`;
     },
-    onModelUpdated(newVal, schema) {
-      this.$emit('model-updated', newVal, schema);
+    onModelUpdated(model, newVal, schema) {
+      this.$emit('model-updated', model, newVal, schema);
     },
   },
 };
