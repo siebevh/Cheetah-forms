@@ -22,7 +22,6 @@
         <v-date-picker :value="date"
                        ref="picker"
                        scrollable
-                       :max="today.toISOString()"
                        v-bind="schema.attributes"
                        :readonly="schema.readonly"
                        @input="setDate"
@@ -36,7 +35,7 @@
 </template>
 
 <script>
-import { watch, ref, computed } from '@vue/composition-api';
+import { ref, computed } from '@vue/composition-api';
 import { getRules } from './composistions/get-rules';
 import { getFieldFromModel } from './composistions/get-field-from-model';
 
@@ -52,15 +51,6 @@ export default {
 
     const { value, setValue, visible } = getFieldFromModel(props.schema, props.model, context);
 
-    watch(() => modal, () => {
-      if (modal) {
-        // TODO: fix the timout
-        setTimeout(() => {
-          context.refs.picker.activePicker = 'YEAR';
-        }, 1000);
-      }
-    });
-
     function formatDate(date) {
       if (!date || typeof date === 'object') return null;
       const [year, month, day] = date.split('-');
@@ -73,10 +63,10 @@ export default {
     }
 
     const date = computed(() => {
-      if (value) {
+      if (value.value) {
         return new Date(value.value).toISOString().substr(0, 10);
       }
-      return new Date().toISOString().substr(0, 10);
+      return today.toISOString().substr(0, 10);
     });
 
     return {
@@ -95,5 +85,8 @@ export default {
 <style>
   .v-dialog__container {
     width: 100%;
+  }
+  >>> .v-btn--active {
+    color: #11324b;
   }
 </style>

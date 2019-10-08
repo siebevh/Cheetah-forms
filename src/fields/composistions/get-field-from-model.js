@@ -24,7 +24,7 @@ export const getFieldFromModel = (schema, model, context) => {
       xmodel = subModel;
     }
     xmodel[pathSplitted[length - 1]] = value;
-    context.emit('model-updated', value, schema.model);
+    context.emit('model-updated', xmodel, value, schema.model);
   }
 
 
