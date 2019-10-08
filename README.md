@@ -31,11 +31,11 @@
     <a href="https://github.com/siebevh/Cheetah-forms"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="#">View Demo</a>
+    <a href="https://cheetah-form.site">View Demo</a>
     ·
-    <a href="https://github.com/siebevh/Cheetah-forms.svg/issues">Report Bug</a>
+    <a href="https://github.com/siebevh/Cheetah-forms/issues">Report Bug</a>
     ·
-    <a href="https://github.com/siebevh/Cheetah-forms.svg/issues">Request Feature</a>
+    <a href="https://github.com/siebevh/Cheetah-forms/issues">Request Feature</a>
   </p>
 </p>
 
