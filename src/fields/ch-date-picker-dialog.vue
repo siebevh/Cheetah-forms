@@ -66,7 +66,7 @@ export default {
       if (value.value) {
         return new Date(value.value).toISOString().substr(0, 10);
       }
-      return today.toISOString().substr(0, 10);
+      return null;
     });
 
     return {
