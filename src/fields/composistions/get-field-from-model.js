@@ -5,8 +5,18 @@ export const getFieldFromModel = (schema, model, context) => {
   const visible = getFieldPropBooleanValue(schema, model, 'visible');
 
   const functions = {
-    getValueByPath: path => schema[path].split('.').reduce((prev, key) => (prev && prev.hasOwnProperty(key) ? prev[key] : null), model),
+    getValueByPath: (path) => {
+      return pathIndex(model, schema[path] );
+    },
   };
+
+  function multiIndex(obj,is) {  // obj,['1','2','3'] -> ((obj['1'])['2'])['3']
+    return is.length ? multiIndex(obj[is[0]],is.slice(1)) : obj
+  }
+
+  function pathIndex(obj,is) {   // obj,'1.2.3' -> multiIndex(obj,['1','2','3'])
+    return multiIndex(obj,is.split('.'))
+  }
 
   function setModelValue(value) {
     const pathSplitted = schema.model.replace(/\[(\w+)\]/g, '.$1').replace(/^\./, '').split('.');
