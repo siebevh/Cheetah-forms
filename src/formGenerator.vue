@@ -17,6 +17,7 @@
           <template v-for="field in schema.fields">
             <v-flex :[dynamicFlex(field)]="true" :key="field.model">
               <form-group
+                      :extra-options="extraOptions"
                       :field="field"
                       :model="model"
                       @model-updated="onModelUpdated">
@@ -44,7 +45,7 @@
                   <template v-for="field in group.fields">
                     <v-flex :[dynamicFlex(field)]="true" :key="'flex' + field">
 
-                      <form-group :field="field" :model="model"
+                      <form-group :field="field" :model="model" :extra-option="extraOptions"
                                   @model-updated="onModelUpdated"></form-group>
 
                     </v-flex>
@@ -75,16 +76,14 @@
 
 
 <script>
-import formGroup from './formGroup.vue';
-
 export default {
   name: 'formGenerator',
-  components: { formGroup },
   props: {
     formCode: {
       type: String,
     },
     schema: Object,
+    extraOptions: Object,
     model: Object,
     showSaveButton: {
       type: Boolean,
@@ -118,7 +117,7 @@ export default {
     },
     onModelUpdated(model, newVal, schema) {
       this.editedModel = model;
-      this.$emit('model-updated', model, newVal, schema);
+      this.$emit('model-updated', this.editedModel);
     },
     nextStage() {
       if (this.stage <= this.groups.length) {
