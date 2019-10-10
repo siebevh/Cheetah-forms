@@ -1,5 +1,5 @@
 <template>
-  <div id="cheetah-form" v-if="schema && model">
+  <div id="cheetah-form" v-if="schema && model" :key="key">
     <div class="header" v-if="schema.title">
       <h3 class="primary--text text-lg-left mb-2 header-title">{{schema.title}}
         <small>{{schema.subtitle}}
@@ -94,6 +94,7 @@ export default {
     return {
       editedModel: this.model,
       stage: 0,
+      key: new Date().getTime(),
       erroredGroupsArray: [], // Validation errors
     };
   },
@@ -117,6 +118,7 @@ export default {
     },
     onModelUpdated(model, newVal, schema) {
       this.editedModel = model;
+      this.key = new Date().getTime();
       this.$emit('model-updated', this.editedModel);
     },
     nextStage() {

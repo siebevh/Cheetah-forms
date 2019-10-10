@@ -33,6 +33,10 @@
       const { rules } = getRules(props.schema, props.model);
       const { value, setValue, visible } = getFieldFromModel(props.schema, props.model, context);
       const items = computed(() => {
+        if (props.schema.realtimeOptions && props.schema.realtimeKey) {
+          const temp = props.extraOptions[props.schema.realtimeOptions].find(e => e.key === props.model[props.schema.realtimeKey]);
+          return temp ? temp[props.schema.realtimeItems] : [];
+        }
         return props.schema.realtimeOptions && props.extraOptions ? props.extraOptions[props.schema.realtimeOptions] : props.schema.items;
       })
 

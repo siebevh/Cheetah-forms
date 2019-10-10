@@ -9,20 +9,23 @@
       <v-layout row wrap :key="index">
         <template v-for="Arrayfield in schema.fields">
           <v-flex :key="Arrayfield.id" :[dynamicFlex(Arrayfield)]="true">
-            <form-group :extra-options="extraOptions" :field="Arrayfield" :model="arrayModel" @model-updated="onModelUpdated"></form-group>
+            <form-group :extra-options="options" :field="Arrayfield" :model="arrayModel"
+                        @model-updated="onModelUpdated"></form-group>
           </v-flex>
         </template>
       </v-layout>
     </template>
-    <v-btn @click="addObject()">{{schema.addText || 'add item' }} </v-btn>
-    <v-btn v-if="value && value.length" @click="removeLastObject()">{{schema.removeText || 'remove last item' }} </v-btn>
+    <v-btn v-if="canAdd" @click="addObject()">{{schema.addText || 'add item' }}</v-btn>
+    <v-btn v-if="value && value.length" @click="removeLastObject()">{{schema.removeText || 'remove last item' }}</v-btn>
 
   </div>
 
 </template>
 <script>
+  import { computed } from '@vue/composition-api';
   import { getRules } from './composistions/get-rules';
   import { getFieldFromModel } from './composistions/get-field-from-model';
+
   export default {
     props: {
       extraOptions: Object,
@@ -37,8 +40,7 @@
         return `st-${fieldSchema.type}`;
       }
 
-      function onModelUpdated(newVal, schema) {
-        console.log(newVal, schema)
+      function onModelUpdated(model, newVal, schema) {
         context.emit('model-updated', newVal, schema);
       }
 
@@ -47,7 +49,7 @@
         if (objectToUpdate && objectToUpdate.length) {
           objectToUpdate.push({})
         } else {
-          objectToUpdate = [{ index: 1}];
+          objectToUpdate = [{ index: 1 }];
         }
         setValue(objectToUpdate)
       }
@@ -57,17 +59,34 @@
         if (objectToUpdate) {
           objectToUpdate.pop();
         }
-        setValue(valueToUpdate)
+        setValue(objectToUpdate)
       }
 
       function dynamicFlex(field) {
         return field.cols ? `md${field.cols}` : 'md12';
       }
 
+      const options = computed(() => {
+        const selectedOptions = props.model[props.schema.model] ? props.model[props.schema.model].map(e => e[props.schema.uniqueKey]) : [];
+        return {
+          ...props.extraOptions,
+          [props.schema.realtimeOptions]: props.extraOptions[props.schema.realtimeOptions].map(e => ({
+            ...e,
+            disabled: selectedOptions.includes(e.key)
+          }))
+        }
+      })
+
+      const canAdd = computed(() => {
+        return options.value[props.schema.realtimeOptions].filter(e => !e.disabled).length > 0;
+      })
+
       return {
         visible: visible.boolValue,
         rules,
+        options,
         value,
+        canAdd,
         setValue,
         addObject,
         removeLastObject,

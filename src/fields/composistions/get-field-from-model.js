@@ -1,4 +1,4 @@
-import { computed } from '@vue/composition-api';
+import { computed, ref } from '@vue/composition-api';
 import { getFieldPropBooleanValue } from './get-field-prop-boolean';
 
 export const getFieldFromModel = (schema, model, context) => {
