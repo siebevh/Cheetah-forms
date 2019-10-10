@@ -5,7 +5,7 @@
     box
     auto
     :value="value"
-    :items="schema.items"
+    :items="items"
     :label="schema.name"
     :required="schema.required"
     :readonly="schema.readonly"
@@ -19,24 +19,31 @@
 </template>
 
 <script>
-import { getRules } from './composistions/get-rules';
-import { getFieldFromModel } from './composistions/get-field-from-model';
+  import { computed } from '@vue/composition-api';
+  import { getRules } from './composistions/get-rules';
+  import { getFieldFromModel } from './composistions/get-field-from-model';
 
-export default {
-  props: {
-    model: Object,
-    schema: Object,
-  },
-  setup(props, context) {
-    const { rules } = getRules(props.schema, props.model);
-    const { value, setValue, visible } = getFieldFromModel(props.schema, props.model, context);
+  export default {
+    props: {
+      model: Object,
+      schema: Object,
+      extraOptions: Object,
+    },
+    setup(props, context) {
+      const { rules } = getRules(props.schema, props.model);
+      const { value, setValue, visible } = getFieldFromModel(props.schema, props.model, context);
+      const items = computed(() => {
+        return props.schema.realtimeOptions && props.extraOptions ? props.extraOptions[props.schema.realtimeOptions] : props.schema.items;
+      })
 
-    return {
-      visible: visible.boolValue,
-      rules,
-      value,
-      setValue,
-    };
-  },
-};
+
+      return {
+        visible: visible.boolValue,
+        rules,
+        value,
+        items,
+        setValue,
+      };
+    },
+  };
 </script>

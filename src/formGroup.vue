@@ -4,6 +4,7 @@
       <component ref="child"
                  :is="getFieldType(field)"
                  :disabled="getFieldRowClasses.disabled"
+                 :extra-options="extraOptions"
                  :model="model"
                  :schema="field" @model-updated="onModelUpdated">
       </component>
@@ -18,6 +19,7 @@ export default {
   components,
   props: {
     model: Object,
+    extraOptions: Object,
     field: {
       type: Object,
       required: true,

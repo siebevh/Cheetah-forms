@@ -4,12 +4,12 @@
       <small>{{schema.name}}
       </small>
     </h2>
-    <template v-if="value" v-for="arrayModel in value">
+    <template v-if="value" v-for="(arrayModel, index) in value">
       <v-divider class="mt-0 mb-2"></v-divider>
-      <v-layout row wrap>
+      <v-layout row wrap :key="index">
         <template v-for="Arrayfield in schema.fields">
           <v-flex :key="Arrayfield.id" :[dynamicFlex(Arrayfield)]="true">
-            <form-group :field="Arrayfield" :model="arrayModel" @model-updated="onModelUpdated"></form-group>
+            <form-group :extra-options="extraOptions" :field="Arrayfield" :model="arrayModel" @model-updated="onModelUpdated"></form-group>
           </v-flex>
         </template>
       </v-layout>
@@ -21,12 +21,11 @@
 
 </template>
 <script>
-  import FormGroup from '../formGroup';
   import { getRules } from './composistions/get-rules';
   import { getFieldFromModel } from './composistions/get-field-from-model';
   export default {
-    components: { FormGroup },
     props: {
+      extraOptions: Object,
       model: Object,
       schema: Object,
     },
@@ -39,6 +38,7 @@
       }
 
       function onModelUpdated(newVal, schema) {
+        console.log(newVal, schema)
         context.emit('model-updated', newVal, schema);
       }
 
