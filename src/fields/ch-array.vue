@@ -4,8 +4,8 @@
       <small>{{schema.name}}
       </small>
     </h2>
-    <template v-if="value" v-for="(arrayModel, index) in value">
-      <v-divider class="mt-0 mb-2"></v-divider>
+    <template v-for="(arrayModel, index) in value">
+      <v-divider :key="index" class="mt-0 mb-2"></v-divider>
       <v-layout row wrap :key="index">
         <template v-for="Arrayfield in schema.fields">
           <v-flex :key="Arrayfield.id" :[dynamicFlex(Arrayfield)]="true">
