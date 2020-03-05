@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --name cheetahForm ./src/index.js",
-    "lint": "vue-cli-service lint --fix",
+    "lint": "vue-cli-service lint --fix"
   },
   "author": "Siebe Vander Henst",
   "license": "MIT",
