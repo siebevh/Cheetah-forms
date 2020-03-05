@@ -1,31 +1,23 @@
 <template>
-  <v-text-field
-    light
-    lazy
+  <v-switch
+    color="primary"
     box
-    v-if="visible"
-    v-bind="schema.attributes"
+    v-bind="schema"
     v-model="value"
-    :prefix="schema.prefix"
     :label="schema.name"
     :readonly="schema.readonly"
-    :required="schema.required"
     :disabled="schema.disabled"
     :placeholder="schema.placeholder"
-    :rules="rules"
     :hint="schema.hint"
-    @blur="onBlur"
     @change="onChange"
-    @focus="onFocus"
-    @input="onInput"
-  >
-  </v-text-field>
+  ></v-switch>
 </template>
 
 <script>
-  import { mixins } from './abstractField';
+  import { mixins } from './abstractField.js';
 
   export default {
+    name: 'zk-text-field',
     mixins: [mixins],
     methods: {
       onBlur() {
@@ -43,10 +35,3 @@
     },
   };
 </script>
-
-<style lang="scss" scoped>
-  .required label::after {
-    color: darkred;
-    content: " *";
-  }
-</style>

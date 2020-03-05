@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --name cheetahForm ./src/index.js",
-    "lint": "vue-cli-service lint --fix"
+    "lint": "vue-cli-service lint --fix",
   },
   "author": "Siebe Vander Henst",
   "license": "MIT",
@@ -20,12 +20,8 @@
     "*.json",
     "*.js"
   ],
-  "dependencies": {
-    "@vue/composition-api": "^0.3.2"
-  },
   "peerDependencies": {
-    "vuetify": "^1.5.5",
-    "vue": "^2.2.1"
+    "vuetify": "^1.5.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
