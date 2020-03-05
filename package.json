@@ -1,6 +1,6 @@
 {
   "name": "cheetah-form",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "A Vuetify Json based form generator",
   "main": "src/index.js",
   "scripts": {
