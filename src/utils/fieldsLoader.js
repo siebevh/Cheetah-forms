@@ -1,11 +1,15 @@
-import textField from '../fields/ch-text-field.vue';
-import arrayField from '../fields/ch-array.vue';
-import datePickerDialog from '../fields/ch-date-picker-dialog.vue';
+import checkbox from '../fields/ch-checkbox.vue';
+import radio from '../fields/ch-radio.vue';
 import select from '../fields/ch-select.vue';
+import textarea from '../fields/ch-textarea.vue';
+import textField from '../fields/ch-text-field.vue';
+import toggler from '../fields/ch-switch.vue';
 
 export default {
-  'cheetah-array-field': arrayField,
-  'cheetah-text-field': textField,
-  'cheetah-date-picker-dialog': datePickerDialog,
-  'cheetah-select': select,
+  'ch-checkbox': checkbox,
+  'ch-radio': radio,
+  'ch-select': select,
+  'ch-text-field': textField,
+  'ch-textarea': textarea,
+  'ch-toggler': toggler,
 };

@@ -78,8 +78,6 @@ Cheetah Forms uses Vuetify to make you form a Material designed form
   * Default style
 
 ### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Composition Api](https://vue-composition-api-rfc.netlify.com/)
 * [Vuetify (v1.5)](https://vuetifyjs.com/en/)
 * [Vue](https://vuejs.org/)
 
@@ -193,15 +191,10 @@ npm install cheetah-form
             max: 1000
         }
         ```
- * `date-picker-dialog`: a date picker
+ * `textarea`: a normal textarea
     ###### special additional options: 
-      ```
-      attributes: {
-          first-day-of-week: 1,
-          locale: 'nl',
-      }
-      ```
- * `select`: ths subtitle of the form (optional)
+      
+ * `select`: a normal select
      ###### special additional options: 
      * string items
         ```
@@ -220,6 +213,24 @@ npm install cheetah-form
           'key': 'someKey2',
         }]
           ```
+          
+ * `toggler`: a switch
+      ###### special additional options: 
+      
+ * `radio`: radio 
+      ###### special additional options: 
+      * object items
+          ```
+              options: [{
+                'label': 'label',
+                'value': 'someKey',
+              },{
+                'label': 'label2',
+                'value': 'someKey2',
+              }]
+          ```
+ * `checkbox`: a simple checkbox 
+      ###### special additional options: 
 
 <!-- ROADMAP -->
 ## Roadmap

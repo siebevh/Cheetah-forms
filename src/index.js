@@ -1,17 +1,19 @@
-import Vue from 'vue';
-import VueCompositionApi from '@vue/composition-api';
 import cheetahForm from './formGenerator.vue';
 import formGroup from './formGroup.vue';
+import fields from './utils/fieldsLoader';
 
 const components = {
+  ...fields,
   cheetahForm,
   formGroup,
 };
 
-Object.keys(components).forEach((name) => {
-  Vue.component(name, components[name]);
-});
+const cheetahForms = {
+  install(Vue) {
+    Object.keys(components).forEach((name) => {
+      Vue.component(name, components[name]);
+    });
+  }
+};
 
-Vue.use(VueCompositionApi);
-
-export default components;
+export default cheetahForms;

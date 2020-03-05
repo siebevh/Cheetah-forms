@@ -1,59 +1,54 @@
 <template>
   <div class="form-group" :class="getFieldRowClasses">
     <div class="field-wrap dense-inputs">
-      <component ref="child"
-                 :is="getFieldType(field)"
-                 :disabled="getFieldRowClasses.disabled"
-                 :extra-options="extraOptions"
-                 :model="model"
+      <component ref="child" :is="getFieldType(field)" :extra-options="extraOptions" :disabled="getFieldRowClasses.disabled" :model="model"
                  :schema="field" @model-updated="onModelUpdated">
       </component>
     </div>
   </div>
 </template>
 <script>
-import components from './utils/fieldsLoader';
+  import components from './utils/fieldsLoader.js'
 
-export default {
-  name: 'form-group',
-  components,
-  props: {
-    model: Object,
-    extraOptions: Object,
-    field: {
-      type: Object,
-      required: true,
+  export default {
+    name: 'form-group',
+    components,
+    props: {
+      model: Object,
+      extraOptions: Object,
+      field: {
+        type: Object,
+        required: true,
+      },
     },
-  },
-  data() {
-    return {
-      classFields: ['required', 'disabled'],
-    };
-  },
-  computed: {
-    getFieldRowClasses() {
-      const fieldClasses = {};
-      this.classFields.forEach((prop) => {
-        const propField = this.field[prop];
-        switch (typeof propField) {
-          case 'function':
-            fieldClasses[prop] = propField.call(this, this.model, this.field, this); break;
-          default:
-            fieldClasses[prop] = propField;
-        }
-      });
-      return fieldClasses;
+    data() {
+      return {
+        classFields: ['required', 'disabled']
+      }
     },
-  },
-  methods: {
-    getFieldType(fieldSchema) {
-      return `cheetah-${fieldSchema.type}`;
+    computed: {
+      getFieldRowClasses() {
+        const fieldClasses = {};
+        this.classFields.forEach(prop =>{
+          const propField = this.field[prop];
+          switch (typeof propField) {
+            case 'function':
+              fieldClasses[prop] = propField.call(this, this.model, this.field, this);
+            default:
+              fieldClasses[prop] = propField;
+          }});
+        return fieldClasses;
+      }
     },
-    onModelUpdated(model, newVal, schema) {
-      this.$emit('model-updated', model, newVal, schema);
+    methods: {
+      getFieldType(fieldSchema) {
+        return `ch-${fieldSchema.type}`;
+      },
+      onModelUpdated(newVal, schema) {
+        this.$emit('model-updated', newVal, schema);
+      },
     },
-  },
-};
+  };
 </script>
 <style lang="scss" scoped>
   .form-group:not([class*=" col-"]) {
@@ -70,7 +65,7 @@ export default {
   }
 
 
-  >>> .dense-inputs {
+  ::v-deep .dense-inputs {
     .v-input {
       font-size: 14px;
 
