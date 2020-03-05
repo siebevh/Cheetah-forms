@@ -20,6 +20,18 @@
     "*.json",
     "*.js"
   ],
+  "keywords": [
+    "json",
+    "vue",
+    "vuejs",
+    "generator",
+    "schema",
+    "vuetify",
+    "form",
+    "forms",
+    "builder",
+    "responsive"
+  ],
   "peerDependencies": {
     "vuetify": "^1.5.5"
   },
