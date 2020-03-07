@@ -17,7 +17,7 @@
   import { mixins } from './abstractField.js';
 
   export default {
-    name: 'zk-text-field',
+    name: 'ch-text-field',
     mixins: [mixins],
     methods: {
       onBlur() {

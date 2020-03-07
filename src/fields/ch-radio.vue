@@ -20,7 +20,7 @@
   import { mixins } from './abstractField.js';
 
   export default {
-    name: 'zk-checkbox',
+    name: 'ch-checkbox',
     mixins: [mixins],
     methods: {
       onBlur() {

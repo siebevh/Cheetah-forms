@@ -1,4 +1,5 @@
 import checkbox from '../fields/ch-checkbox.vue';
+import combobox from '../fields/ch-combobox.vue';
 import radio from '../fields/ch-radio.vue';
 import select from '../fields/ch-select.vue';
 import textarea from '../fields/ch-textarea.vue';
@@ -7,6 +8,7 @@ import toggler from '../fields/ch-switch.vue';
 
 export default {
   'ch-checkbox': checkbox,
+  'ch-combobox': combobox,
   'ch-radio': radio,
   'ch-select': select,
   'ch-text-field': textField,
