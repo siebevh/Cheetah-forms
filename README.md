@@ -214,6 +214,26 @@ npm install cheetah-form
         }]
           ```
           
+ * `combobox`: a combobox
+      ###### special additional options: 
+      * string items
+         ```
+          items: ['Men', 'Woman']
+         ```
+      
+      * object items
+         ```
+         itemValue: 'key',
+         itemText: 'label',
+         items: [{
+           'label': 'label',
+           'key': 'someKey',
+         },{
+           'label': 'label2',
+           'key': 'someKey2',
+         }]
+           ```
+          
  * `toggler`: a switch
       ###### special additional options: 
       

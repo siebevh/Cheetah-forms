@@ -21,7 +21,7 @@
   import { mixins } from './abstractField.js';
 
   export default {
-    name: 'zk-select',
+    name: 'ch-select',
     mixins: [mixins],
     computed: {
       items() {
