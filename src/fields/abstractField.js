@@ -1,16 +1,3 @@
-import { get as objGet, forEach } from 'lodash';
-
-function attributesDirective(el, binding, vnode) {
-  let attrs = objGet(vnode.context, 'schema.attributes', {});
-  const container = binding.value || 'input';
-  if (typeof container === 'string') {
-    attrs = objGet(attrs, container) || attrs;
-  }
-  forEach(attrs, (val, key) => {
-    el.setAttribute(key, val);
-  });
-}
-
 export const mixins = {
   props: ['model', 'schema', 'formOptions', 'disabled', 'extraOptions'],
   data() {
@@ -18,14 +5,6 @@ export const mixins = {
       commentBoxOpen: false,
     };
   },
-  directives: {
-    attributes: {
-      bind: attributesDirective,
-      updated: attributesDirective,
-      componentUpdated: attributesDirective,
-    },
-  },
-
   computed: {
     value: {
       cache: false,
@@ -54,11 +33,11 @@ export const mixins = {
     rules() {
       const rules = [];
       if (this.schema.required) {
-        rules.push(v => !!v || `${this.schema.name} is een verplicht veld`);
+        rules.push(v => !!v || `${this.schema.name} is a required field`);
       }
       if (this.schema.requiredIf) {
         if (!this.schema.visibleIf.split('.').reduce((prev, key) => prev && prev.hasOwnProperty(key) ? prev[key] : null, this.model)) {
-          rules.push(v => !!v || `${this.schema.name} is een verplicht veld`);
+          rules.push(v => !!v || `${this.schema.name} is a required field`);
         }
       }
       return rules;
