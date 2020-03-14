@@ -249,8 +249,12 @@ npm install cheetah-form
                 'value': 'someKey2',
               }]
           ```
+ 
  * `checkbox`: a simple checkbox 
-      ###### special additional options: 
+       ###### special additional options: 
+       
+ * `password`: a password input field with hide and reviel option
+       ###### special additional options: 
 
 <!-- ROADMAP -->
 ## Roadmap
