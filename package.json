@@ -36,15 +36,15 @@
     "vuetify": "^1.5.5"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-eslint": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
+    "@vue/cli-service": "^5.0.8",
     "@vue/eslint-config-airbnb": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
-    "rollup-plugin-vue": "^5.0.1",
+    "rollup-plugin-vue": "^6.0.0",
     "sass-loader": "^7.1.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
